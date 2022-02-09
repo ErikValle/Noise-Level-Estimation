@@ -125,7 +125,8 @@ for i in range(1,26,1):
     std = i
     var = std * std
     mean = 0.0
-    noisyImage = grayImage + std * np.random.randn(row,col) #np.random.normal(mean, std, grayImage.shape)    
+    noisyImage = grayImage + std * np.random.randn(row,col) #np.random.normal(mean, std, grayImage.shape)  
+    noisyImage = np.clip(noisyImage,0,255) #Values must be between 0 and 255.
     # Noise Estimation
     EV = noiseLevelEstimation(noisyImage, patchSize, confidenceLevel, numIteration)
     stdArray[i, 0] = i
